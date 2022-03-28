@@ -24,7 +24,8 @@ namespace TestTaskUsar.ViewModels
         public List<Message> MessagesList { get; set; }
         public ObservableCollection<Message> MessagesShowingList { get; set; }
 
-        public MainViewModel(IHttpClientServiceImplementation messageServceHttp, IFileService fileService, IDialogService dialogService)
+        public MainViewModel(IHttpClientServiceImplementation messageServceHttp, 
+            IFileService fileService, IDialogService dialogService)
         {
             Task.Run(() => GetMessages());
             SendMessageCommand = new RelayCommand(() => SendCommand());
@@ -52,6 +53,7 @@ namespace TestTaskUsar.ViewModels
 
             if(result != null)
             {
+                MessagesList.Add(result);
                 MessagesShowingList.Add(result);
             }
         }
@@ -104,9 +106,6 @@ namespace TestTaskUsar.ViewModels
                 _dialogService.ShowMessage(ex.Message);
             }
         }
-
-
-    
 
         public ICommand SendMessageCommand { get; set; }
         public ICommand FilterCheckBoxCheckedCommand { get; set; }
