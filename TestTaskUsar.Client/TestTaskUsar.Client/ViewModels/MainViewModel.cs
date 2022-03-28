@@ -86,7 +86,7 @@ namespace TestTaskUsar.ViewModels
 
         private void FilteringMessages()
         {
-            MessagesShowingList = new ObservableCollection<Message>(MessagesList.Where(m => m.CreationDate >= StartFilterDate && m.CreationDate <= EndFilterDate));
+            MessagesShowingList = new ObservableCollection<Message>(MessagesList.Where(m => m.CreationDate >= StartFilterDate && m.CreationDate <= EndFilterDate.AddMinutes(2)));
         }
 
         private void SaveAllMessages()
